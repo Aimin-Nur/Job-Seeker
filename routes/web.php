@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ControllerJob;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,3 +36,22 @@ Route::middleware(['guest:user'])->group(function () {
 
 // Rute untuk logout, dapat diakses oleh semua pengguna (tanpa middleware)
 Route::get('/LogoutUser', [AuthController::class, 'LogoutUser']);
+
+
+Route::get('/profil', function () {
+    return view('landingPage.profil');
+});
+
+// Rute Auth Admin
+Route::middleware(['auth:admin'])->group(function (){
+    Route::get('/dashboardAdmin', [AdminController::class, 'dashboard']);
+    Route::get('/dataKaryawan', [AdminController::class, 'dataKaryawan']);
+    Route::get('/LogoutAdmin', [AuthController::class, 'LogoutAdmin']);
+    Route::post('/addKaryawan', [AdminController::class, 'addKaryawan']);
+    Route::post('/editKaryawan/{NIP}', [AdminController::class, 'editKaryawan']);
+    Route::post('/deleteKaryawan/{NIP}', [AdminController::class, 'deleteKaryawan']);
+});
+
+Route::get('/adminDash', function () {
+    return view('adminPage.dashboard');
+});

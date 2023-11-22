@@ -32,4 +32,12 @@ class ControllerJob extends Controller
     }
 
 
+    public function profil($id)
+    {
+        return view('landingPage.profil');
+    }
+
+
+
+
 }

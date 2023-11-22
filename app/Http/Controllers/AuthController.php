@@ -8,16 +8,23 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    public function LoginUser(Request $request)
+    public function loginUser(Request $request)
     {
-        if(Auth::guard('user')->attempt([
-            'email' => $request -> email,
+        if (Auth::guard('user')->attempt([
+            'email' => $request->email,
             'password' => $request->password,
-            ])){
-            return redirect('/');
-           }else{
-            return redirect('/login')->with(['warning' => 'Email atau Password Anda tidak terdaftar.']);
-           }
+        ])) {
+            $user = Auth::guard('user')->user();
+
+            // Periksa peran pengguna dan arahkan ke halaman yang sesuai
+            if ($user->role == 'User') {
+                return redirect('/');
+            } elseif ($user->role == 'Admin') {
+                return redirect('/dashboardAdmin');
+            }
+        }
+
+        return redirect('/login')->with(['warning' => 'Email atau Password Anda tidak terdaftar.']);
     }
 
     public function LogoutUser()
@@ -27,4 +34,25 @@ class AuthController extends Controller
             return redirect('/login')->with(['logout' => 'Anda berhasil Logout.']);
         }
     }
+
+    // public function LoginAdmin(Request $request)
+    // {
+    //     if(Auth::guard('admin')->attempt([
+    //         'email' => $request -> email,
+    //         'password' => $request->password,
+    //         ])){
+    //         return redirect('/dashboardAdmin');
+    //        }else{
+    //         return redirect('/portal')->with(['warning' => 'Email atau Password Anda tidak terdaftar.']);
+    //        }
+    // }
+
+
+    // public function LogoutAdmin()
+    // {
+    //     if(Auth::guard('admin')->check()){
+    //         Auth::guard('admin')->logout();
+    //         return redirect('/portal')->with(['sukses' => 'Anda Berhasil Logout.']);;
+    //     }
+    // }
 }
