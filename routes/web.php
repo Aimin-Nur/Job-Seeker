@@ -31,27 +31,23 @@ Route::middleware(['guest:user'])->group(function () {
         return view('landingPage.login');
     })->name('login');
 
+
     Route::post('/LoginUser', [AuthController::class, 'LoginUser']);
 });
 
 // Rute untuk logout, dapat diakses oleh semua pengguna (tanpa middleware)
 Route::get('/LogoutUser', [AuthController::class, 'LogoutUser']);
+Route::get('/LogoutAdmin', [AuthController::class, 'LogoutUser']);
 
 
 Route::get('/profil', function () {
     return view('landingPage.profil');
 });
 
-// Rute Auth Admin
-Route::middleware(['auth:admin'])->group(function (){
-    Route::get('/dashboardAdmin', [AdminController::class, 'dashboard']);
-    Route::get('/dataKaryawan', [AdminController::class, 'dataKaryawan']);
-    Route::get('/LogoutAdmin', [AuthController::class, 'LogoutAdmin']);
-    Route::post('/addKaryawan', [AdminController::class, 'addKaryawan']);
-    Route::post('/editKaryawan/{NIP}', [AdminController::class, 'editKaryawan']);
-    Route::post('/deleteKaryawan/{NIP}', [AdminController::class, 'deleteKaryawan']);
+
+// Rute Master User
+Route::middleware(['auth:user'])->group(function (){
+    Route::get('/dashbaordAdmin', [AdminController::class, 'dashboard']);
 });
 
-Route::get('/adminDash', function () {
-    return view('adminPage.dashboard');
-});
+
