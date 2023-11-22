@@ -74,8 +74,19 @@
                                 </div>
                                 <!-- Header-btn -->
                                 <div class="header-btn d-none f-right d-lg-block">
-                                    <a href="#" class="btn head-btn1">Register</a>
-                                    <a href="/login" class="btn head-btn2">Login</a>
+                                    @auth
+                                        <!-- Tampilkan nama dan profil pengguna jika sudah login -->
+                                        <span>Welcome, {{Auth::guard('user')->user()->name}}</span>
+                                        <a href="/profile" class="btn head-btn2">Profile</a>
+                                        <form action="/logout" method="post" style="display: inline-block;">
+                                            @csrf
+                                            <button type="submit" class="btn head-btn2">Logout</button>
+                                        </form>
+                                    @else
+                                        <!-- Tampilkan tombol Register dan Login jika belum login -->
+                                        <a href="#" class="btn head-btn1">Register</a>
+                                        <a href="/login" class="btn head-btn2">Login</a>
+                                    @endauth
                                 </div>
                             </div>
                         </div>

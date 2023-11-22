@@ -24,7 +24,7 @@ class AuthController extends Controller
     {
         if(Auth::guard('user')->check()){
             Auth::guard('user')->logout();
-            return redirect('/');
+            return redirect('/login')->with(['logout' => 'Anda berhasil Logout.']);
         }
     }
 }

@@ -24,10 +24,14 @@ Route::get('/job', [ControllerJob::class, 'listJob']);
 Route::get('/detailJob/{id}', [ControllerJob::class, 'detailJob']);
 
 
-Route::middleware(['guest:user'])->group(function (){
+Route::middleware(['guest:user'])->group(function () {
+    // Rute-rute yang hanya dapat diakses oleh tamu
     Route::get('/login', function () {
         return view('landingPage.login');
     })->name('login');
+
     Route::post('/LoginUser', [AuthController::class, 'LoginUser']);
 });
 
+// Rute untuk logout, dapat diakses oleh semua pengguna (tanpa middleware)
+Route::get('/LogoutUser', [AuthController::class, 'LogoutUser']);

@@ -75,6 +75,12 @@
                     echo '<div class="alert alert-danger">' . $gagalLogin . '</div>';
                 }
                 ?>
+                <?php
+                $berhasil = Session::get('logout');
+                if ($berhasil) {
+                    echo '<div class="alert alert-success">' . $berhasil . '</div>';
+                }
+                ?>
               <div class="mb-3">
                 <label class="form-label">Email address</label>
                 <input type="email" name="email" class="form-control" placeholder="your@email.com" autocomplete="off">
