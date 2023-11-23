@@ -38,65 +38,46 @@
 <div class="modal-dialog modal-lg" role="document">
   <div class="modal-content">
     <div class="modal-header">
-      <h5 class="modal-title">New report</h5>
+      <h5 class="modal-title">Data Pekerjaan Baru</h5>
       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
+    <form action="/addJob" method="POST" enctype="multipart/form-data">
+        @csrf
     <div class="modal-body">
+        @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+      @endif
       <div class="mb-3">
-        <label class="form-label">Name</label>
-        <input type="text" class="form-control" name="example-text-input" placeholder="Your report name">
+        <label class="form-label">Logo Perusahan</label>
+        <input name="field_logo" type="file" class="form-control" name="example-text-input" placeholder="Your report name">
       </div>
-      <label class="form-label">Report type</label>
-      <div class="form-selectgroup-boxes row mb-3">
-        <div class="col-lg-6">
-          <label class="form-selectgroup-item">
-            <input type="radio" name="report-type" value="1" class="form-selectgroup-input" checked>
-            <span class="form-selectgroup-label d-flex align-items-center p-3">
-              <span class="me-3">
-                <span class="form-selectgroup-check"></span>
-              </span>
-              <span class="form-selectgroup-label-content">
-                <span class="form-selectgroup-title strong mb-1">Simple</span>
-                <span class="d-block text-muted">Provide only basic data needed for the report</span>
-              </span>
-            </span>
-          </label>
-        </div>
-        <div class="col-lg-6">
-          <label class="form-selectgroup-item">
-            <input type="radio" name="report-type" value="1" class="form-selectgroup-input">
-            <span class="form-selectgroup-label d-flex align-items-center p-3">
-              <span class="me-3">
-                <span class="form-selectgroup-check"></span>
-              </span>
-              <span class="form-selectgroup-label-content">
-                <span class="form-selectgroup-title strong mb-1">Advanced</span>
-                <span class="d-block text-muted">Insert charts and additional advanced analyses to be inserted in the report</span>
-              </span>
-            </span>
-          </label>
-        </div>
+      <div class="mb-3">
+        <label class="form-label">Nama Perusahaan</label>
+        <input name="field_company" type="text" class="form-control" name="example-text-input" placeholder="Your report name">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Posisi Pekerjaan</label>
+        <input name="field_job" type="text" class="form-control" name="example-text-input" placeholder="Your report name">
       </div>
       <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-6">
           <div class="mb-3">
-            <label class="form-label">Report url</label>
+            <label class="form-label">Email Perusahaan</label>
             <div class="input-group input-group-flat">
-              <span class="input-group-text">
-                https://tabler.io/reports/
-              </span>
-              <input type="text" class="form-control ps-0"  value="report-01" autocomplete="off">
+              <input name="field_email" type="text" class="form-control ps-0"  autocomplete="off">
             </div>
           </div>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-6">
           <div class="mb-3">
-            <label class="form-label">Visibility</label>
-            <select class="form-select">
-              <option value="1" selected>Private</option>
-              <option value="2">Public</option>
-              <option value="3">Hidden</option>
-            </select>
+            <label class="form-label">Kontak Perusahaan</label>
+                <input name="field_kontak" type="number" class="form-control" name="example-text-input" placeholder="+62">
           </div>
         </div>
       </div>
@@ -105,34 +86,71 @@
       <div class="row">
         <div class="col-lg-6">
           <div class="mb-3">
-            <label class="form-label">Client name</label>
-            <input type="text" class="form-control">
+            <label class="form-label">Gaji</label>
+            <input name="field_gaji" type="text" class="form-control">
           </div>
         </div>
         <div class="col-lg-6">
           <div class="mb-3">
-            <label class="form-label">Reporting period</label>
-            <input type="date" class="form-control">
+            <label class="form-label">Lokasi Penempatan</label>
+            <input name="field_lokasi" type="text" class="form-control">
           </div>
         </div>
-        <div class="col-lg-12">
+        <div class="col-lg-12 mb-3">
           <div>
-            <label class="form-label">Additional information</label>
-            <textarea class="form-control" rows="3"></textarea>
+            <label class="form-label">Requitment Hard Skil</label>
+            <textarea name="field_hard" class="form-control" rows="3"></textarea>
           </div>
         </div>
+        <div class="col-lg-12 mb-3">
+            <div>
+              <label class="form-label">Requitment Soft Skil</label>
+              <textarea name="field_soft" class="form-control" rows="3"></textarea>
+            </div>
+        </div>
+        <div class="col-lg-12 mb-3">
+            <div>
+              <label class="form-label">Deskripsi Pekerjaan</label>
+              <textarea name="field_descJob" class="form-control" rows="3"></textarea>
+            </div>
+        </div>
+        <div class="col-lg-12 mb-3">
+            <div>
+              <label class="form-label">Deskripsi Perusahaan</label>
+              <textarea name="field_descCompany" class="form-control" rows="3"></textarea>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Kategori Pekerjaan</label>
+            <select name="field_kategori" class="form-control" id="">
+                <option value="Pekerja Tetap">Pekerja Tetap</option>
+                <option value="Freelance">Freelance</option>
+                <option value="Remote">Remote</option>
+            </select>
+          </div>
       </div>
     </div>
     <div class="modal-footer">
       <a href="#" class="btn btn-link link-secondary" data-bs-dismiss="modal">
         Cancel
       </a>
-      <a href="#" class="btn btn-primary ms-auto" data-bs-dismiss="modal">
+      <button type="submit" class="btn btn-primary ms-auto" data-bs-dismiss="modal">
         <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
         <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 5l0 14" /><path d="M5 12l14 0" /></svg>
         Create new report
-      </a>
+      </button>
     </div>
   </div>
+</form>
 </div>
 </div>
+
+{{-- Logic agar ketika pesan diterima, modal tetap tampil --}}
+<script>
+    @if ($errors->any())
+        document.addEventListener('DOMContentLoaded', function () {
+            var modal = new bootstrap.Modal(document.getElementById('modal-report'));
+            modal.show();
+        });
+    @endif
+  </script>

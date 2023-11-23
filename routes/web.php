@@ -48,6 +48,10 @@ Route::get('/profil', function () {
 // Rute Master User
 Route::middleware(['auth:user'])->group(function (){
     Route::get('/dashbaordAdmin', [AdminController::class, 'dashboard']);
+    Route::get('/adminJob', [AdminController::class, 'dataJob']);
+    Route::post('/addJob', [AdminController::class, 'addJob']);
+    Route::post('/editJob/{id}', [AdminController::class, 'editJob']);
+    Route::post('/deleteJob/{id}', [AdminController::class, 'deleteJob']);
 });
 
 
