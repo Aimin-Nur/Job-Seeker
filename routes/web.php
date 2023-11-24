@@ -21,6 +21,8 @@ Route::get('/', function () {
     return view('landingPage.index');
 });
 
+Route::get('/', [ControllerJob::class, 'index']);
+
 Route::get('/job', [ControllerJob::class, 'listJob']);
 Route::get('/detailJob/{id}', [ControllerJob::class, 'detailJob']);
 
@@ -52,6 +54,7 @@ Route::middleware(['auth:user'])->group(function (){
     Route::post('/addJob', [AdminController::class, 'addJob']);
     Route::post('/editJob/{id}', [AdminController::class, 'editJob']);
     Route::post('/deleteJob/{id}', [AdminController::class, 'deleteJob']);
+    Route::get('/listEmploye', [AdminController::class, 'listEmploye']);
 });
 
 

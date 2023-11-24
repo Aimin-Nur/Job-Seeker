@@ -12,13 +12,15 @@ use Illuminate\Http\UploadedFile;
 
 class AdminController extends Controller
 {
-    public function dashboard(){
-        $isActive = request()->is('dashboardAdmin') ? 'active' : '';
+    public function dashboard()
+    {
+        $isActive = request()->is('dahboardAdmin') ? 'active' : '';
         return view ('adminPage.dashboard', compact('isActive'));
     }
 
-    public function dataJob(){
-        $isActive = request()->is('dataKaryawan') ? 'active' : '';
+    public function dataJob()
+    {
+        $isActive = request()->is('adminJob') ? 'active' : '';
         $dataJob = DB::table('job')->get();
         return view('adminPage.dataJob', compact('dataJob', 'isActive'));
     }
@@ -60,14 +62,8 @@ class AdminController extends Controller
                 ->withInput();
         }
 
-
         // Simpan Logo Perusahaan
         $logoFileName = $request->file('field_logo')->getClientOriginalName();
-
-
-
-
-
 
         $addJob = new modelJob;
         $addJob->job = $request->input('field_job');
@@ -136,5 +132,12 @@ class AdminController extends Controller
         $job->update();
 
         return redirect('/adminJob')->with('edit', 'Data Pekerjaan berhasil diedit');
+    }
+
+
+    public function listEmploye()
+    {
+        $isActive = request()->is('listEmploye') ? 'active' : '';
+        return view ('adminPage.karyawan', compact('isActive'));
     }
 }

@@ -9,6 +9,13 @@ use App\Models\modelJob;
 
 class ControllerJob extends Controller
 {
+    public function index(){
+        // $isActive = request()->is('dataKaryawan') ? 'active' : '';
+        $listJob = DB::table('job')->get();
+        return view('landingPage.index', compact('listJob'));
+    }
+
+
     public function listJob(){
         // $isActive = request()->is('dataKaryawan') ? 'active' : '';
         $sumOfjob = DB::table('job')->count();

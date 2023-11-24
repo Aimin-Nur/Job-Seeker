@@ -55,22 +55,22 @@
       @endif
       <div class="mb-3">
         <label class="form-label">Logo Perusahan</label>
-        <input name="field_logo" type="file" class="form-control" name="example-text-input" placeholder="Your report name">
+        <input name="field_logo" type="file" class="form-control" name="example-text-input" placeholder="Logo Perusahaan">
       </div>
       <div class="mb-3">
         <label class="form-label">Nama Perusahaan</label>
-        <input name="field_company" type="text" class="form-control" name="example-text-input" placeholder="Your report name">
+        <input name="field_company" type="text" class="form-control" name="example-text-input" placeholder="Masukkan Nama Perusahaan">
       </div>
       <div class="mb-3">
         <label class="form-label">Posisi Pekerjaan</label>
-        <input name="field_job" type="text" class="form-control" name="example-text-input" placeholder="Your report name">
+        <input name="field_job" type="text" class="form-control" name="example-text-input" placeholder="Masukkan Posisi Pekerjaan">
       </div>
       <div class="row">
         <div class="col-lg-6">
           <div class="mb-3">
             <label class="form-label">Email Perusahaan</label>
             <div class="input-group input-group-flat">
-              <input name="field_email" type="text" class="form-control ps-0"  autocomplete="off">
+              <input name="field_email" type="text" class="form-control ps-0" placeholder="Masukkan Email Perusahaan"  autocomplete="off">
             </div>
           </div>
         </div>
@@ -87,37 +87,37 @@
         <div class="col-lg-6">
           <div class="mb-3">
             <label class="form-label">Gaji</label>
-            <input name="field_gaji" type="text" class="form-control">
+            <input name="field_gaji" type="text" placeholder="9 - 10 Juta Rupiah" class="form-control">
           </div>
         </div>
         <div class="col-lg-6">
           <div class="mb-3">
             <label class="form-label">Lokasi Penempatan</label>
-            <input name="field_lokasi" type="text" class="form-control">
+            <input name="field_lokasi" placeholder="Makassar, Sulsel" type="text" class="form-control">
           </div>
         </div>
         <div class="col-lg-12 mb-3">
           <div>
             <label class="form-label">Requitment Hard Skil</label>
-            <textarea name="field_hard" class="form-control" rows="3"></textarea>
+            <textarea name="field_hard" placeholder="Masukkan Hard Skill" class="form-control" rows="3"></textarea>
           </div>
         </div>
         <div class="col-lg-12 mb-3">
             <div>
               <label class="form-label">Requitment Soft Skil</label>
-              <textarea name="field_soft" class="form-control" rows="3"></textarea>
+              <textarea name="field_soft" placeholder="Masukkan Soft Skill" class="form-control" rows="3"></textarea>
             </div>
         </div>
         <div class="col-lg-12 mb-3">
             <div>
               <label class="form-label">Deskripsi Pekerjaan</label>
-              <textarea name="field_descJob" class="form-control" rows="3"></textarea>
+              <textarea name="field_descJob" placeholder="Masukkan Deskripsi Pekerjaan" class="form-control" rows="3"></textarea>
             </div>
         </div>
         <div class="col-lg-12 mb-3">
             <div>
               <label class="form-label">Deskripsi Perusahaan</label>
-              <textarea name="field_descCompany" class="form-control" rows="3"></textarea>
+              <textarea name="field_descCompany" placeholder="Masukkan Deskripsi Perusahaan" class="form-control" rows="3"></textarea>
             </div>
         </div>
         <div class="mb-3">

@@ -187,86 +187,34 @@
         <div class="row justify-content-center">
             <div class="col-xl-10">
                 <!-- single-job-content -->
-                <div class="single-job-items mb-30">
-                    <div class="job-items">
-                        <div class="company-img">
-                            <a href="job_details.html"><img src="{{asset('landingPage')}}/assets/img/icon/job-list1.png" alt=""></a>
-                        </div>
-                        <div class="job-tittle">
-                            <a href="job_details.html"><h4>Digital Marketer</h4></a>
-                            <ul>
-                                <li>Creative Agency</li>
-                                <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                <li>$3500 - $4000</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="items-link f-right">
-                        <a href="job_details.html">Full Time</a>
-                        <span>7 hours ago</span>
-                    </div>
-                </div>
+                <!-- Count of Job list End -->
+                @foreach ($listJob as $job )
                 <!-- single-job-content -->
                 <div class="single-job-items mb-30">
                     <div class="job-items">
                         <div class="company-img">
-                            <a href="job_details.html"><img src="{{asset('landingPage')}}/assets/img/icon/job-list2.png" alt=""></a>
+                            @if ($job->logo_company)
+                                <a href="#"><img src="{{ asset('landingPage/assets/img/icon/' . $job->logo_company) }}" style="max-width: 100px; max-height: 100px;" alt=""></a>
+                            @else
+                                <a href="#"><img src="{{ asset('landingPage/assets/img/icon/default-logo.png') }}" alt="Default Logo"></a>
+                            @endif
                         </div>
-                        <div class="job-tittle">
-                            <a href="job_details.html"><h4>Digital Marketer</h4></a>
+                        <div class="job-tittle job-tittle2">
+                            <a href="#">
+                                <h4>{{$job->job}}</h4>
+                            </a>
                             <ul>
-                                <li>Creative Agency</li>
-                                <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                <li>$3500 - $4000</li>
+                                <li>{{$job->company}}</li>
+                                <li><i class="fas fa-map-marker-alt"></i>{{$job->lokasi}}</li>
+                                <li>{{$job->gaji}}</li>
                             </ul>
                         </div>
                     </div>
-                    <div class="items-link f-right">
-                        <a href="job_details.html">Full Time</a>
-                        <span>7 hours ago</span>
+                    <div class="items-link items-link2 f-right">
+                        <a href="/detailJob/{{$job->id}}">Detail</a>
                     </div>
                 </div>
-                 <!-- single-job-content -->
-                <div class="single-job-items mb-30">
-                    <div class="job-items">
-                        <div class="company-img">
-                            <a href="job_details.html"><img src="{{asset('landingPage')}}/assets/img/icon/job-list3.png" alt=""></a>
-                        </div>
-                        <div class="job-tittle">
-                            <a href="job_details.html"><h4>Digital Marketer</h4></a>
-                            <ul>
-                                <li>Creative Agency</li>
-                                <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                <li>$3500 - $4000</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="items-link f-right">
-                        <a href="job_details.html">Full Time</a>
-                        <span>7 hours ago</span>
-                    </div>
-                </div>
-                 <!-- single-job-content -->
-                <div class="single-job-items mb-30">
-                    <div class="job-items">
-                        <div class="company-img">
-                            <a href="job_details.html"><img src="{{asset('landingPage')}}/assets/img/icon/job-list4.png" alt=""></a>
-                        </div>
-                        <div class="job-tittle">
-                            <a href="job_details.html"><h4>Digital Marketer</h4></a>
-                            <ul>
-                                <li>Creative Agency</li>
-                                <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                <li>$3500 - $4000</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="items-link f-right">
-                        <a href="job_details.html">Full Time</a>
-                        <span>7 hours ago</span>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
